@@ -1,0 +1,28 @@
+{%- assign config_blog = site.project.blog -%}
+<div class="flex-container">
+  {%- if config_blog.logo_header %}
+  <!-- Logo -->
+  <div id="logo" class="text-left">
+    <a href="/" aria-label="Logo" title="Go to the home page">
+      <img class="img-fluid lazyload" data-src="{{ config_blog.logo_header }}" alt="site logo"/>
+    </a>
+  </div>
+  {% endif %}
+  {%- if config_blog.menu_items %}
+  <!-- Menu -->
+  <div id="menu" class="d-none d-lg-block">
+    {%- include menu.html menu_items=config_blog.menu_items %}
+  </div>
+  {% endif %}
+</div>
+
+<!-- Menu for small screen -->
+<div id="menu-icon" class="d-lg-none link">
+  <i class="fa fa-bars"></i>
+</div>
+
+<div id="sidebar-overlay" style="display: none">
+  <div id="sidebar">
+    <div id="sidebar-close" class="link">x</div>
+  </div>
+</div>

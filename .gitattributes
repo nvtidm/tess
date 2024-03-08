@@ -1,0 +1,35 @@
+# See https://git-scm.com/docs/gitattributes
+
+# Ruby
+*.rb diff=ruby
+
+# End of lines (eof) with Linux and macOS style: LF
+# (else windows rewrites eof with CRLF)
+* text eol=lf
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+# archives
+*.zip binary
+*.tar.gz binary
+# fonts
+*.eot binary
+*.woff binary
+*.woff2 binary
+# images
+*.ttf binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.gif binary
+
+# For GitHub statistics
+# See https://github.com/github/linguist#overrides
+# blog contents
+src/_posts/* linguist-vendored
+src/_drafts/* linguist-vendored
+src/about/* linguist-vendored
+src/blog/* linguist-vendored
+src/contact/* linguist-vendored
+# third-party libraries
+src/_core/static/libs/* linguist-vendored

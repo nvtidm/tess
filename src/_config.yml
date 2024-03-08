@@ -1,0 +1,117 @@
+# Site configuration for production
+# See default configuration: https://jekyllrb.com/docs/configuration/default
+
+# Server
+
+url: "http://localhost:4000" # change by https://your.domain.name
+baseurl: ""
+
+# SEO
+
+title: "Software Engineering Blog - Bob"
+description: "Personal blog about software engineering"
+author: "Bob"
+keywords: "bob,informatics,mathematics,software,engineer"
+logo: "/_static/config/img/icon-iphone.png"
+lang: "en"
+
+# Articles
+
+paginate: 12
+paginate_path: "/blog/articles/page/:num/"
+permalink: "/blog/articles/:year/:month/:day/:title:output_ext"
+
+# /!\ Overridden by --drafts command line option (if present force to true)
+show_drafts: false
+
+# /!\ Overridden by --unpublished command line option (if present force to true)
+unpublished: false
+
+# Specific to project
+
+project:
+  blog:
+    title: "Software Engineering"
+    keywords: [ "Research", "Development / Software", "Algorithm", "Design", "Data", "AI / Machine Learning", "Applied Mathematics", "Computer science", "Web", "Security", "Reliability", "Infrastructure / Hardware", "System", "Methodology", "Business" ]
+    logo_header: "/_static/config/img/site-logo.png"
+    theme_color: "#383b43"
+    menu_items:
+      - name: "Blog"
+        link: "/blog/"
+        tooltip: ""
+      - name: "About"
+        link: "/about/"
+        tooltip: ""
+      - name: "🧑🏼‍💻 Source code"
+        link: "https://github.com/glegoux/jekyll-tech-blog"
+        tooltip: "Explore the source code"
+      - name: "🗂️ Documentation"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki"
+        tooltip: "Read the documentation"
+    socials:
+      - name: "LinkedIn"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+        class_icon:  "fab fa-linkedin"
+      - name: "X (Twitter)"
+        link: "https://twitter.com/gilleslegoux"
+        class_icon: "fab fa-x-twitter"
+      - name: "GitHub"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+        class_icon:  "fab fa-github"
+      - name: "SlideShare"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+        class_icon: "fab fa-slideshare"
+      - name: "Medium"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+        class_icon: "fab fa-medium"
+      - name: "Email"
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+        class_icon:  "fas fa-paper-plane"
+    status_availability:
+      link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+    google_analytics_code: ""
+  avatar:
+    name: "Bob"
+    job: "Software Engineer"
+    github:
+      link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+    linkedin:
+      link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+    stackoverflow:
+      link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+    medium:
+      link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+  article:
+    comment:
+      disqus_code: ""
+    actions:
+      source_code:
+        link: "https://raw.githubusercontent.com/glegoux/jekyll-tech-blog/main/src/_posts"
+      resources:
+        link: "https://raw.githubusercontent.com/glegoux/jekyll-tech-blog/main/resources"
+      issue:
+        link: "https://github.com/glegoux/jekyll-tech-blog/issues"
+      edit:
+        link: "https://github.com/glegoux/jekyll-tech-blog/edit/main/src/_posts/"
+      help:
+        link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Help"
+    attachment:
+      url: "https://raw.githubusercontent.com/glegoux/jekyll-tech-blog/main/resources"
+      image:
+        path: "images"
+        suffix: ""
+    authors:
+      bob:
+        firstname: "Bob"
+        lastname: ""
+        job: "Software Engineer"
+        company: ""
+        follow:
+          link: "https://github.com/glegoux/jekyll-tech-blog/wiki/Configuration"
+      glegoux:
+        firstname: "Gilles"
+        lastname: "LEGOUX"
+        job: "Software Engineer"
+        company: "Freelance"
+        follow:
+          link: "https://glegoux.com"

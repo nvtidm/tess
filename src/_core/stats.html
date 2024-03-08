@@ -1,0 +1,62 @@
+---
+layout: default
+sitemap: false
+permalink: "/_stats/"
+---
+<div id="page-stats" class="w-100">
+
+<p style="color: grey;">
+  <a href="/blog/articles" title="See all articles">
+    <i class="fa fa-newspaper"></i> All tech blog posts
+  </a> 
+</p>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<h1 id="stats">Stats</h1>
+
+<table id="table-stats" class="stats">
+  <tr>
+    <td><b>Total number of posts</b></td>
+    <td><b>Total reading time (minutes)</b></td>
+  </tr>
+  <tr>
+    <td><span id="total-n-posts"></span></td>
+    <td><span id="total-reading-time"></span></td>
+  </tr>
+</table>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <b>Count the posts by category</b>
+    <div id="posts-by-category" style="width: 100%; height: 300px;"></div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <b>Count the posts by year</b>
+    <div id="posts-by-year" style="width: 100%; height: 300px;"></div>
+  </div>
+</div>
+
+{% assign posts = site.posts %}
+<table id="table-log" class="log sortable">
+  <tr>
+    <th onclick="sortTablePostsLog(0)" data-sort="dsc">Date</th>
+    <th onclick="sortTablePostsLog(1)">Name</th>
+    <th onclick="sortTablePostsLog(2)">Category</th>
+    <th onclick="sortTablePostsLog(3)">Reading time (minutes)</th>
+  </tr>
+  {%- for post in posts %}
+  <tr>
+    <td>{{post.date | date: '%Y-%m-%d' }}</td>
+    <td><a href="{{post.url}}">{{post.title}}</a></td>
+    <td>{{post.category}}</td>
+    <td>{{post.time_reading_minutes | prepend: "00" | slice: -2, 2 }}</td>
+  </tr>
+  {%- else -%}
+  <tr>
+    <td colspan="4">No one available posts</td>
+  </tr>
+  {%- endfor %}
+</table>
+
+</div>

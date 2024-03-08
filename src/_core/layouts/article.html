@@ -1,0 +1,168 @@
+---
+layout: default
+---
+{%- assign config_article = site.project.article -%}
+{%- assign article_id = page.date | date: '%Y-%m-%d-' | append: page.title | slugify -%}
+{%- assign n_tags = page.tags | size -%}
+<div id="page-article">
+
+  {%- if jekyll.environment == 'development' -%}
+  <div class="container no-print" title="Only visible in development mode">
+    <div class="row">
+      {%- if page.draft -%}
+      <div class="warning">
+        This article is a <b>draft</b> visible only in <b>development mode</b> which will not
+        deployed on production.
+      </div>
+      {% else %}
+      <div class="success">
+        This article is <b>ready</b> or is <b>already</b> deployed on <b>production</b>.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Article metadata -->
+  <div class="article-metadata">
+
+    <div class="row article-browser-container">
+      <div class="col-8 text-left">
+        <a href="/blog/articles" title="See all articles">
+          <i class="fa fa-newspaper"></i> All tech blog posts
+        </a>
+        <span>&#xbb;</span>
+        <!-- Article category -->
+        {% include article-category.html %}
+      </div>
+      <!-- Article browser -->
+      <div class="col-4 text-right no-print">
+        {% include article-browser.html %}
+      </div>
+    </div>
+
+    <!-- Article title -->
+    <div class="row article-title" title="Title of this article">
+      {{ page.title }}
+    </div>
+
+    <!-- Article description -->
+    <div class="row article-description" title="Description of this article">
+      {{ page.description }}
+    </div>
+
+    <!-- Article tags -->
+    <div class="row">
+      {% include article-tags.html %}
+    </div>
+
+    <!-- Socials sharing -->
+    <div class="row article-social">
+      {% include article-social-sharing.html %}
+    </div>
+
+    <!-- Inline author(s) -->
+    <div class="row article-authors-inline">
+      {% include article-authors-inline.html %}
+    </div>
+
+    <div class="row">
+      <!-- Article details -->
+      <div class="article-details col-6">
+        <ul>
+          <li title="Published date of this article">
+            <i class="far fa-calendar-alt"></i>
+            <span>{{ page.date | date: '%B %d, %Y' }}</span>
+          </li>
+          <li title="Reading time of this article">
+            <i class="far fa-clock"></i>
+            <span>
+              {{ page.time_reading_minutes }} min
+            </span>
+          </li>
+        </ul>
+      </div>
+      <!-- Article license -->
+      <div class="col-6">
+        {% include article-license.html %}
+      </div>
+    </div>
+
+    <hr class="sep no-print"/>
+
+    <div class="row">
+      <div class="col-4 text-left">
+        <!-- Article table of contents -->
+        <div id="table-of-contents" class="no-print" title="See or hide the table of contents">
+          <i class="fas fa-list-ul"></i>
+          <span class="d-none d-md-inline">Table of contents</span>
+        </div>
+      </div>
+      <div class="col-8 text-right">
+        <!-- Article actions -->
+        {% include article-actions.html %}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Article content -->
+  <div id="article-content">
+
+    <!-- Article table of contents container -->
+    <div id="table-of-contents-container" style="display: none;"></div>
+
+    <div class="markdown-body text-justify-with-hyphens">
+      {{ content }}
+    </div>
+
+    <div class="article-category-tags">
+      <ul>
+        <li>
+          <!-- Article category -->
+          <span>Category: </span>
+          {% include article-category.html %}
+        </li>
+        {% if n_tags > 0 %}
+        <li>
+          <!-- Article tags -->
+          <span>Tags: </span>
+          {% include article-tags.html %}
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="row no-print">
+      <div class="col-12">
+        {% include article-social-sharing.html %}
+      </div>
+    </div>
+
+    <div>
+      <!-- Article license -->
+      <div class="col-12">
+        {% include article-license.html %}
+      </div>
+    </div>
+
+    <hr class="sep no-print"/>
+
+    <div class="row no-print">
+      <!-- Article browser -->
+      <div class="col-4 text-left">
+        {% include article-browser.html %}
+      </div>
+      <!-- Article actions -->
+      <div class="col-8 text-right">
+        {% include article-actions.html %}
+      </div>
+    </div>
+
+  </div>
+
+  {%- include article-authors.html -%}
+
+  {%- include article-other-articles.html -%}
+
+</div>

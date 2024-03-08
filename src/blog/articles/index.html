@@ -1,0 +1,134 @@
+---
+layout: default
+articles: true
+redirect_from:
+- /blog/
+- /blog/articles/page/1/
+- /
+- /home/
+---
+{%- assign config_blog = site.project.blog -%}
+{%- assign config_core = site.project_core -%}
+<div id="page-articles">
+
+  <div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        {% include blinker-info.html
+          title=config_blog.title
+          keywords=config_blog.keywords
+        %}
+      </div>
+      <div class="col-lg-6">
+        {% include avatar.html %}
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  {%- if jekyll.environment == 'development' -%}
+    {% if site.limit_posts > 0 %}
+    <div class="warning no-print" title="Only visible in development mode">
+      The configuration <b>site.limit_posts</b> and/or option of command line <b>--limit_posts</b> is/are defined to <b>show only {{ site.limit_posts }} articles from the last one.</b>
+    </div>
+    {% endif %}
+  {% endif %}
+
+  <!-- Articles advanced search -->
+  <div id="articles-text-search">
+    <span title="Launch a search articles">
+      <i class="fa fa-search"></i>
+    </span>
+    <input type="text" title="Type your search"/>
+  </div>
+
+  <ul class="articles-advanced-search">
+    <li class="articles-categories-button" title="Search an article by category">
+      <i class="fa fa-tags" aria-hidden="true"></i>
+      <span class="link-strong">
+        Categories
+      </span>
+    </li>
+    <li class="articles-archive-button" title="Search an article by published date">
+      <span class="link-strong">
+        <i class="fa fa-archive" aria-hidden="true"></i>
+        Archives
+      </span>
+    </li>
+    <li title="See the pinned posts">
+      <a href="/_pinned-posts/">
+        <span class="link-strong">
+          <i class="fa-solid fa-map-pin"></i>
+          Pinned
+        </span>
+      </a>
+    </li>
+    <li title="See the stats">
+      <a href="/_stats/">
+        <span class="link-strong">
+          <i class="fa-solid fa-chart-simple"></i>
+          Stats
+        </span>
+      </a>
+    </li>
+  </ul>
+
+
+  <div id="articles-archive-container" class="filter-result-advanced-search"
+       style="display: none">
+  </div>
+  <div id="articles-categories-container" class="filter-result-advanced-search"
+       style="display: none">
+  </div>
+
+  <div id="result-advanced-search"></div>
+
+  <hr class="sep" />
+
+  <!-- Articles subscriptions -->
+  <ul class="articles-subscription">
+    <li>
+      <i class="fa fa-rss" aria-hidden="true"></i>
+      Subscribe:
+    </li>
+    <li>
+      <a href="/rss.xml" class="link-strong" title="Subscribe to RSS feed">
+        <span class="notranslate">RSS</span>
+      </a>
+      |
+      <a href="/atom.xml" class="link-strong" title="Subscribe to Atom feed">
+        <span class="notranslate">Atom</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Articles list -->
+  <div class="list-articles">
+    <div class="row">
+      {%- assign posts = paginator.posts -%}
+      {%- for post in posts %}
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        {% include card-article.html
+        pinned=post.pinned
+        url=post.url
+        date=post.date
+        title=post.title
+        description=post.description
+        category=post.category
+        time_reading_minutes=post.time_reading_minutes
+        draft=post.draft
+        %}
+      </div>
+      {%- else -%}
+      <p>No one available article</p>
+      {%- endfor %}
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  {% include article-pagination-browser.html %}
+
+</div>
